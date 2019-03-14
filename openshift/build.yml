@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: List
+items:
+
+  - apiVersion: v1
+    kind: ImageStream
+    metadata:
+      name: health-check
+      namespace: build
+      labels:
+        app: health-check
+        project: build
+        env: stg
+
+  - apiVersion: v1
+    kind: BuildConfig
+    metadata:
+      name: health-check
+      namespace: build
+      labels:
+        app: health-check
+        project: build
+        env: stg
+    spec:
+      strategy:
+        dockerStrategy:
+          dockerfilePath: Dockerfile
+      source:
+        type: Binary
+      output:
+        to:
+          kind: ImageStreamTag
+          name: "health-check:latest"
+      runPolicy: Serial
+      triggers: []
