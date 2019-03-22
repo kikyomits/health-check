@@ -7,6 +7,7 @@ node("nodejs-8") {
             // Tag image in CICD project into dpe-basic project.
             // This command will trigger Deployment. This setting is defined in deployment-config in openshift
             sh "oc tag cicd/dpe-basic-api:latest dpe-basic-api:latest -n dpe-basic"
+            
             // Check deployment status
             sh "oc rollout status deploymentconfig/dpe-basic-api -n dpe-basic"
     }

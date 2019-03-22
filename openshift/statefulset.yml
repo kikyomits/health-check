@@ -8,6 +8,8 @@ items:
       name: health-check-stflset
       labels:
         app: health-check
+        project: build
+        env: prod
     spec:
       replicas: 1
       strategy:
@@ -19,11 +21,10 @@ items:
         spec:
           containers:
             - name: health-check-stflset
-              image: docker-registry.default.svc:5000/build/health-check:0.0.1
               imagePullPolicy: Always
               ports:
                 - name: api
-                  containerPort: 8086
+                  containerPort: 8080
               resources:
                 requests:
                   cpu: 25m
@@ -43,7 +44,7 @@ items:
               - health-check
             from:
               kind: ImageStreamTag
-              name: 'health-check:0.0.1'
+              name: 'health-check:latest'
 
 
   - apiVersion: v1
@@ -58,7 +59,7 @@ items:
         - name: https
           port: 443
           protocol: TCP
-          targetPort: 8086
+          targetPort: 8080
       selector:
         app: health-check
 

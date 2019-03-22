@@ -10,7 +10,7 @@ items:
       labels:
         app: health-check
         project: build
-        env: stg
+        env: prod
 
   - apiVersion: v1
     kind: BuildConfig
@@ -20,7 +20,7 @@ items:
       labels:
         app: health-check
         project: build
-        env: stg
+        env: prod
     spec:
       strategy:
         dockerStrategy:
