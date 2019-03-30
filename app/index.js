@@ -7,13 +7,20 @@ const bodyParser = require('body-parser');
 const execSync = require('child_process').execSync;
 
 // log
+if (process.env.LOG_LEVEL) {
+    LOG_LEVEL = process.env.LOG_LEVEL;
+}
+else {
+    LOG_LEVEL = "info";
+}
+
 log4js.configure({
     appenders: {
         access: { type: "console", layout: { type: "basic" } }
     },
     replaceConsole: true,
     categories: {
-        default: { appenders: ['access'], level: 'info' }
+        default: { appenders: ['access'], level: LOG_LEVEL }
     }
 });
 
