@@ -9,10 +9,11 @@ const execSync = require('child_process').execSync;
 // log
 log4js.configure({
     appenders: {
-        access: { type: 'stdout'  } //追加
+        access: { type: "console", layout: { type: "basic" } }
     },
+    replaceConsole: true,
     categories: {
-        default: { appenders: ['access'], level: 'info' } //追加
+        default: { appenders: ['access'], level: 'info' }
     }
 });
 

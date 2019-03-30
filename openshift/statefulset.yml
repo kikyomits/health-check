@@ -18,9 +18,12 @@ items:
         metadata:
           labels:
             app: health-check
+            project: build
+            env: prod
         spec:
           containers:
             - name: health-check-stflset
+              image: "docker-registry.default.svc:5000/build/health-check:latest"
               imagePullPolicy: Always
               ports:
                 - name: api
@@ -68,7 +71,7 @@ items:
     metadata:
       name: health-check-stflset
     spec:
-      host: health-stflset.test-platform-engineering.club
+      host: health-stflset.prod.seiyuapis.com
       path: /
       port:
         targetPort: https
