@@ -20,7 +20,6 @@ items:
       labels:
         app: health-check
         project: build
-        env: prod
     spec:
       strategy:
         dockerStrategy:

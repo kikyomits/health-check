@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const execSync = require('child_process').execSync;
 
 // log
+var LOG_LEVEL = "";
 if (process.env.LOG_LEVEL) {
     LOG_LEVEL = process.env.LOG_LEVEL;
 }
@@ -40,6 +41,7 @@ app.use('/api/v1/', router);
 // Server Start
 app.listen(port);
 console.log("server stating on " + port + " ...")
+console.log("log level: " + LOG_LEVEL)
 
 // Document Root
 app.get('/', function (req, res) {
@@ -53,5 +55,17 @@ app.get('/docker', function (req, res) {
     const result = execSync(`cat /proc/self/cgroup | grep "docker" | sed s/\\\\//\\\\n/g | tail -1 | cut -c 1-20`);
     res.write('The container id receiving this get requiest is: ');
     res.write(result.toString())
+    res.end();
+});
+
+// Docker Container ID
+app.get('/pod-id', function (req, res) {
+    // Stdout docker container id from inside
+    const result = execSync(`cat /proc/self/cgroup | grep "docker" | sed s/\\\\//\\\\n/g | tail -1 | cut -c 1-20`);
+    const pod_id = process.env.POD_ID;
+    res.write('The container id receiving this get requiest is: ');
+    res.write(result.toString());
+    res.write('The POD id receiving this get requiest is: ');
+    res.write(pod_id.toString());
     res.end();
 });
