@@ -45,7 +45,7 @@ console.log("log level: " + LOG_LEVEL)
 
 // Document Root
 app.get('/', function (req, res) {
-    res.write('Hellow World, API test is sccessful');
+    res.write('Hellow World, API test is sccessful, ABTEST');
     res.end();
 });
 

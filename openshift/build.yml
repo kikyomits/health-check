@@ -29,6 +29,6 @@ items:
       output:
         to:
           kind: ImageStreamTag
-          name: "health-check:latest"
+          name: "health-check:abtest"
       runPolicy: Serial
       triggers: []
