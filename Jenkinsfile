@@ -1,10 +1,10 @@
-@Library("devops") _
-def ocp = new cicd.ocp()
-def git_tool = new cicd.github()
-def postStep = new cicd.postStep()
-def common = new cicd.common()
-def buildAndTest = new cicd.buildAndTest()
-def init = new cicd.init()
+// @Library("devops") _
+// def ocp = new cicd.ocp()
+// def git_tool = new cicd.github()
+// def postStep = new cicd.postStep()
+// def common = new cicd.common()
+// def buildAndTest = new cicd.buildAndTest()
+// def init = new cicd.init()
 pipeline {
     agent none
     options { skipDefaultCheckout true }
