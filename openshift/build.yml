@@ -11,7 +11,6 @@ items:
         app: health-check
         project: build
         env: prod
-
   - apiVersion: v1
     kind: BuildConfig
     metadata:
@@ -29,6 +28,6 @@ items:
       output:
         to:
           kind: ImageStreamTag
-          name: "health-check:abtest"
+          name: "health-check:latest"
       runPolicy: Serial
       triggers: []
