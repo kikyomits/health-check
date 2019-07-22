@@ -58,6 +58,13 @@ app.get('/docker', function (req, res) {
     res.end();
 });
 
+app.get('/health', function (req, res) {
+    // Stdout docker container id from inside
+    res.write('OK');
+    res.end();
+});
+
+
 // Docker Container ID
 app.get('/pod-id', function (req, res) {
     // Stdout docker container id from inside
